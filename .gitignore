@@ -1,0 +1,9 @@
+api/node_modules
+api/.env
+api/views
+api/uploads
+api/dist
+
+client/node_modules
+client/.env
+client/dist

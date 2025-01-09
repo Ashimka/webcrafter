@@ -1,0 +1,71 @@
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* * {
+  outline: 4px solid red;
+} */
+
+/* Prevent font size inflation */
+html {
+  -moz-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+}
+
+/* Remove default margin in favour of better control in authored CSS */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+  padding: 0;
+}
+img {
+  vertical-align: top;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+button {
+  border: none;
+  cursor: pointer;
+}
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  --text-color: #ffffff;
+  --text-dark: #1b2944;
+  --sm-gap: 10px;
+  --md-gap: 20px;
+  --xl-gap: 40px;
+}
+
+body {
+  background: #1b2944;
+  color: var(--text-color);
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 var(--md-gap);
+}
+.main {
+  flex: 1 1;
+}

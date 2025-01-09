@@ -1,0 +1,10 @@
+# Dockerfile для client
+FROM node:alpine AS build
+
+WORKDIR /app
+
+COPY package.json yarn.lock ./
+RUN yarn install
+
+COPY . .
+RUN yarn build
