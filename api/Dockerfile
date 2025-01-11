@@ -1,5 +1,5 @@
 # Dockerfile для api
-FROM node:alpine
+FROM node:20
 
 WORKDIR /app
 
@@ -8,8 +8,9 @@ RUN yarn install
 
 COPY . .
 
-# Переносим содержимое client/dist в api/views
-RUN cp -r ../client/dist/* ./views/
+RUN npx prisma db push
+
+RUN yarn build
 
 EXPOSE 8055
 CMD ["yarn", "start"]

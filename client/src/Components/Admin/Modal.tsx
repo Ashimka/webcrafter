@@ -27,7 +27,6 @@ const Modal = ({
 
   const { fetchCreate } = useCreate();
   const { fetchDeleteFile } = useDeleteFile(image);
-  console.log(initialData);
 
   useEffect(() => {
     if (isOpen && initialData) {
@@ -47,7 +46,7 @@ const Modal = ({
         fileDada.append("image", file);
 
         const fetchFile = async (fileDada: FormData) => {
-          const response = await fetch(`${SERVER_URL}/admink/upload`, {
+          const response = await fetch(`/api/admink/upload`, {
             method: "POST",
             credentials: "include",
             body: fileDada,
@@ -66,7 +65,7 @@ const Modal = ({
   };
 
   const dataUpdate = async (dataUpdate: FetchData) => {
-    await fetch(`${SERVER_URL}/admink/${url}/${initialData?.id}`, {
+    await fetch(`/api/admink/${url}/${initialData?.id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",

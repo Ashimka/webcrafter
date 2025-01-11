@@ -15,7 +15,7 @@ const Login = () => {
     event.preventDefault();
 
     if (login && password) {
-      const response = await fetch(`http://localhost:8055/api/login`, {
+      const response = await fetch(`/api/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         credentials: "include",
