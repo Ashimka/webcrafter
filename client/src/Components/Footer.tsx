@@ -4,8 +4,6 @@ import vk from "/assets/vk.svg";
 import "../styles/footer.scss";
 import { Link, NavLink } from "react-router-dom";
 
-const URL = import.meta.env.VITE_API_URL;
-
 const Footer = () => {
   const date = new Date();
   return (
@@ -51,7 +49,7 @@ const Footer = () => {
         <div className="footer__policy">
           <Link
             className="link-policy"
-            to={`${URL}/assets/privacy-policy`}
+            to={`/assets/privacy-policy`}
             type="application/pdf"
           >
             Политика конфиденциальности
