@@ -51,7 +51,7 @@ const Footer = () => {
         <div className="footer__policy">
           <Link
             className="link-policy"
-            to={`${URL}/privacy-policy`}
+            to={`${URL}/assets/privacy-policy`}
             type="application/pdf"
           >
             Политика конфиденциальности
