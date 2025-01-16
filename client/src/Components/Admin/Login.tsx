@@ -60,7 +60,7 @@ const Login = () => {
         />
         <input
           className="login__input"
-          type="text"
+          type="password"
           name="password"
           placeholder="password"
           required
