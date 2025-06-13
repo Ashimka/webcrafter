@@ -1,8 +1,24 @@
+import { ContactFormData, contactFormSchema } from "@/schema";
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 
 export async function POST(req: Request) {
-  const { name, email, phone, project, message } = await req.json();
+  const body = await req.json();
+
+  const formData = body as ContactFormData;
+
+  // Валидация данных на сервере
+  const validationResult = contactFormSchema.safeParse(formData);
+
+  if (!validationResult.success) {
+    return NextResponse.json(
+      {
+        error: "Ошибка валидации",
+        details: validationResult.error.format(),
+      },
+      { status: 400 }
+    );
+  }
 
   const transporter = nodemailer.createTransport({
     host: process.env.SMTP_HOST,
@@ -18,7 +34,7 @@ export async function POST(req: Request) {
     from: process.env.SMTP_USER,
     to: "ashimka@internet.ru",
     subject: "Новая заявка с сайта",
-    text: `Имя: ${name}\nEmail: ${email}\nТелефон: ${phone}\nПроект: ${project}\nСообщение: ${message}`,
+    text: `Имя: ${body.name}\nEmail: ${body.email}\nТелефон: ${body.phone}\nПроект: ${body.project}\nСообщение: ${body.message}`,
   };
 
   try {
