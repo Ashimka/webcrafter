@@ -1,47 +1,34 @@
-
-FROM node:20-alpine AS builder
+# Базовый образ для сборки (общий для всех стадий)
+FROM node:20-alpine AS base
 
 WORKDIR /app
+COPY package*.json ./
 
-COPY /package*.json ./
+# Стадия для разработки
+FROM base AS development
+RUN npm install
+COPY . .
+EXPOSE 3000
+CMD ["npm", "run", "dev"]
 
+# Стадия для сборки (builder)
+FROM base AS builder
 RUN npm ci
-
-COPY / ./
-
+COPY . .
 RUN npm run build
 
-
-FROM node:20-alpine AS runner
-
-WORKDIR /app
-
-COPY /package*.json ./
+# Стадия для production
+FROM base AS production
 RUN npm ci --only=production
 
 COPY --from=builder /app/.next ./.next
 COPY --from=builder /app/public ./public
-COPY --from=builder /app/next.config.js ./
+COPY --from=builder /app/next.config.* ./
 
-RUN addgroup --system --gid 1001 nodejs
-RUN adduser --system --uid 1001 nextjs
+RUN addgroup --system --gid 1001 nodejs && \
+    adduser --system --uid 1001 nextjs
 USER nextjs
 
 EXPOSE 3000
 
 CMD ["npm", "start"]
-
-
-FROM node:20-alpine AS development
-
-WORKDIR /app
-
-COPY /package*.json ./
-
-RUN npm install
-
-COPY / ./
-
-EXPOSE 3000
-
-CMD ["npm", "run", "dev"] 

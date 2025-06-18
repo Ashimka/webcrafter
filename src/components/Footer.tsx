@@ -1,6 +1,7 @@
 "use client";
 
 import { Mail, Phone } from "lucide-react";
+import Link from "next/link";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -46,14 +47,14 @@ export default function Footer() {
               <div className="text-gray-400 text-sm mb-4 md:mb-0">
                 © 2021 - {currentYear} Web Crafters. Все права защищены.
               </div>
-              <div className="flex flex-col gap-4 sm:flex-row space-x-6 text-sm">
-                <a
-                  href="#"
-                  className="text-gray-400 hover:text-blue-400 transition-colors"
-                >
-                  Политика конфиденциальности
-                </a>
-              </div>
+              <Link
+                className="text-gray-400 hover:text-blue-400 transition-colors"
+                href="/files/privacy-policy.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Политика конфиденциальности
+              </Link>
             </div>
           </div>
         </div>

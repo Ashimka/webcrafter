@@ -41,8 +41,12 @@ export async function POST(req: Request) {
     await transporter.sendMail(mailOptions);
     return NextResponse.json({ message: "Сообщение отправлено" });
   } catch (err) {
+    const error = err instanceof Error ? err : new Error(String(err));
+
+    console.error("Ошибка отправки почты:", error.message);
+
     return NextResponse.json(
-      { message: "Не удалось отправить сообщение" },
+      { message: `Ошибка: ${error.message}` },
       { status: 500 }
     );
   }
