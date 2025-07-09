@@ -46,7 +46,6 @@ export default function ContactSection() {
       });
     }
 
-    // Очищаем ошибку валидации при изменении поля
     if (validationErrors[name as keyof ContactFormData]) {
       setValidationErrors((prev) => ({
         ...prev,
@@ -61,7 +60,6 @@ export default function ContactSection() {
     setValidationErrors({});
 
     try {
-      // Валидация данных
       const validatedData = contactFormSchema.parse(formData);
 
       setIsSubmitting(true);
@@ -111,13 +109,13 @@ export default function ContactSection() {
     {
       icon: Mail,
       title: "Email",
-      value: "ashimka@internet.ru",
+      value: "ashimka@webcrafters.ru",
       description: "Напишите нам в любое время",
     },
     {
       icon: Phone,
       title: "Телефон",
-      value: "+7 (964) 955-22-84",
+      value: "+7 (964) 964-22-84",
       description: "Звоните с 9:00 до 18:00",
     },
 
@@ -133,7 +131,6 @@ export default function ContactSection() {
     <section id="contact" className="py-20 bg-gray-50">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
-          {/* Section Header */}
           <div className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
               Свяжитесь
@@ -149,7 +146,6 @@ export default function ContactSection() {
           </div>
 
           <div className="grid lg:grid-cols-3 gap-8">
-            {/* Contact Form */}
             <div className="lg:col-span-2">
               <Card className="border-0 shadow-lg">
                 <CardHeader>
@@ -327,7 +323,6 @@ export default function ContactSection() {
               </Card>
             </div>
 
-            {/* Contact Info */}
             <div className="space-y-6">
               {contactInfo.map((info, index) => (
                 <Card
@@ -357,7 +352,6 @@ export default function ContactSection() {
             </div>
           </div>
 
-          {/* FAQ Section */}
           <div className="mt-16">
             <h3 className="text-2xl font-bold text-gray-900 text-center mb-8">
               Часто задаваемые вопросы

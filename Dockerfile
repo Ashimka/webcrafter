@@ -22,6 +22,7 @@ FROM base AS production
 RUN npm ci --only=production
 
 COPY --from=builder /app/.next ./.next
+RUN chown -R nextjs:nodejs .next
 COPY --from=builder /app/public ./public
 COPY --from=builder /app/next.config.* ./
 

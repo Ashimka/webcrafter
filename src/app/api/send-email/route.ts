@@ -7,7 +7,6 @@ export async function POST(req: Request) {
 
   const formData = body as ContactFormData;
 
-  // Валидация данных на сервере
   const validationResult = contactFormSchema.safeParse(formData);
 
   if (!validationResult.success) {

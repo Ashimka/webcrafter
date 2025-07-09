@@ -10,9 +10,7 @@ export default function Footer() {
     <footer className="bg-gray-900 text-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="max-w-6xl mx-auto">
-          {/* Main Footer Content */}
           <div className="mb-8">
-            {/* Company Info */}
             <div className="lg:col-span-2">
               <h2 className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent mb-4">
                 Web Crafters
@@ -23,25 +21,23 @@ export default function Footer() {
                 миссия.
               </p>
 
-              {/* Contact Info */}
               <div className="space-y-3">
                 <div className="flex items-center text-gray-300">
                   <Mail className="w-4 h-4 mr-3 text-blue-400" />
                   <a href="#" className="hover:text-blue-400 transition-colors">
-                    ashimka@internet.ru
+                    ashimka@webcrafters.ru
                   </a>
                 </div>
                 <div className="flex items-center text-gray-300">
                   <Phone className="w-4 h-4 mr-3 text-blue-400" />
                   <a href="#" className="hover:text-blue-400 transition-colors">
-                    +7 (964) 955-22-84
+                    +7 (964) 964-22-84
                   </a>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Bottom Bar */}
           <div className="border-t border-gray-800 pt-6">
             <div className="flex flex-col md:flex-row justify-between items-center">
               <div className="text-gray-400 text-sm mb-4 md:mb-0">
