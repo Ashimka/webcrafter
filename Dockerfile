@@ -21,13 +21,13 @@ RUN npm run build
 FROM base AS production
 RUN npm ci --only=production
 
+RUN addgroup --system --gid 1001 nodejs && \
+    adduser --system --uid 1001 nextjs
 COPY --from=builder /app/.next ./.next
 RUN chown -R nextjs:nodejs .next
 COPY --from=builder /app/public ./public
 COPY --from=builder /app/next.config.* ./
 
-RUN addgroup --system --gid 1001 nodejs && \
-    adduser --system --uid 1001 nextjs
 USER nextjs
 
 EXPOSE 3000
